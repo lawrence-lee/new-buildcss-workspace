@@ -1,0 +1,83 @@
+info:
+    description:
+        "Guestbook REST API. A Java client JAR is available for use with the group ID 'com.liferay', artifact ID
+        'com.liferay.docs.guestbook.client', and version '1.0.0'."
+    license:
+        name: "Apache 2.0"
+        url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+    title: "Guestbook"
+    version: v1.0
+openapi: 3.0.1
+components:
+    schemas:
+        Guest:
+            properties:
+                guestId:
+                    format: int64
+                    type: integer
+                name:
+                    type: string
+            type: object
+paths:
+    /guests:
+        get:
+            description:
+                Retrieves the guests
+            operationId: getGuestsPage
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Guest"
+                                type: array
+                        application/xml:
+                            schema:
+                                items:
+                                    $ref: "#/components/schemas/Guest"
+                                type: array
+            tags: ["Guest"]
+        post:
+            description:
+                Adds a new guest
+            operationId: postGuest
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/Guest"
+                    application/xml:
+                        schema:
+                            $ref: "#/components/schemas/Guest"
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Guest"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Guest"
+            tags: ["Guest"]
+    /guests/{id}:
+        get:
+            description:
+                Retrieves the guest
+            operationId: getGuest
+            parameters:
+                - in: path
+                  name: id
+                  required: true
+                  schema:
+                      type: string
+            responses:
+                200:
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/Guest"
+                        application/xml:
+                            schema:
+                                $ref: "#/components/schemas/Guest"
+            tags: ["Guest"]

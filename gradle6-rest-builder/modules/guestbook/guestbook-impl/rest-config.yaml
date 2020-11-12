@@ -1,0 +1,9 @@
+apiDir: "../guestbook-api/src/main/java"
+apiPackagePath: "com.liferay.docs.guestbook"
+application:
+    baseURI: "/guestbook"
+    className: "GuestbookApplication"
+    name: "Guestbook"
+author: "lawrence"
+clientDir: "../guestbook-client/src/main/java"
+testDir: "../guestbook-test/src/testIntegration/java"
